@@ -1,0 +1,15 @@
+import matplotlib.pyplot as plt
+import pandas as pd
+data = pd.read_csv('perturbation_estimation.csv')
+list1 = list(data['real value'])
+list2 = list(data['first order estimation'])
+list3 = list(data['second order estimation'])
+print(list1)
+plt.scatter(list1, list3, c='b', s=6., label='Second order')
+plt.scatter(list1, list2, c='r', s=6., label='First order')
+plt.plot(list1, list1, c='y', label=r'$\lambda^{(2)}$')
+plt.legend()
+plt.xlabel(r'$\lambda^{(2)}$')
+plt.ylabel(r'estimate $\lambda^{(2)}$')
+plt.savefig('estimation_accuracy1.pdf')
+plt.show()
